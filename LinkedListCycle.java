@@ -14,3 +14,35 @@ Explanation: There is a cycle in the linked list, where the tail connects to the
 Input: head = [1], pos = -1
 Output: false
 Explanation: There is no cycle in the linked list.
+
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        // Tc: O(n) where n is the no of elements of a linked list and Sc: O(1) 
+         if (head == null || head.next == null) {
+            return false;
+        }
+
+         ListNode slow = head;
+         ListNode fast = head.next;
+        while(fast != null && fast.next != null)
+        {
+            if(slow == fast) return true;
+             slow = slow.next;
+             fast = fast.next.next;
+        }
+        return false;
+    }
+}
