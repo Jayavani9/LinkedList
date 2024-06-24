@@ -81,6 +81,33 @@ class Node
     Node(int d) {data = d; next = null; }
 } */
 
+//Better solution using 2 pointers
+class Solution {
+
+    // Function to find the data of kth node from
+    // the end of a linked list.
+    int getKthFromLast(Node head, int k) {
+        // Your code here
+        //Tc: O(n) Sc: O(1)
+        Node slow = head;
+        Node fast = head;
+        
+        for(int i = 0; i < k; i++)
+        {
+            if(slow == null) return -1;
+            slow = slow.next;
+        }
+        
+        while(slow != null)
+        {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast.data;
+    }
+}
+
+//Bruteforce Approach
 class Solution {
 
     // Function to find the data of kth node from
